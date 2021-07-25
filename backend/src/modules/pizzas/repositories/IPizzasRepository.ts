@@ -6,4 +6,5 @@ export default interface IPizzasRepository {
   create(data: ICreatePizzaDTO): Promise<Pizza>;
   findAll(): Promise<Pizza[]>;
   findByName(name: string): Promise<Pizza | undefined>;
+  remove(id: string): Promise<Pizza | undefined>;
 }

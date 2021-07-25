@@ -39,6 +39,18 @@ class PizzasRepository implements IPizzasRepository {
 
     return pizza;
   }
+
+  public async remove(id: string): Promise<Pizza | undefined> {
+    const pizza = await this.ormRepository.findOne({ where: { id } });
+
+    if (pizza) {
+      const teste = await this.ormRepository.remove(pizza);
+      console.log(teste);
+      return pizza;
+    }
+
+    return pizza;
+  }
 }
 
 export default PizzasRepository;

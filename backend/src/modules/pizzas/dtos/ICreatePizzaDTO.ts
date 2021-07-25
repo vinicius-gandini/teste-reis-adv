@@ -3,4 +3,5 @@ export default interface ICreatePizzaDTO {
   description: string;
   price: number;
   user_id: string;
+  image: string | undefined;
 }

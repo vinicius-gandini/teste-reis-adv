@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import path from 'path';
 
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
@@ -17,6 +18,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   if (err instanceof AppError) {

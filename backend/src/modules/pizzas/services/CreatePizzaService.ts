@@ -10,6 +10,7 @@ interface IRequest {
   description: string;
   price: number;
   user_id: string;
+  image: string | undefined;
 }
 
 @injectable()
@@ -24,6 +25,7 @@ class CreatePizzaService {
     description,
     price,
     user_id,
+    image,
   }: IRequest): Promise<Pizza> {
     const pizzaExists = await this.pizzasRepository.findByName(name);
 
@@ -36,6 +38,7 @@ class CreatePizzaService {
       description,
       price,
       user_id,
+      image,
     });
 
     return pizza;

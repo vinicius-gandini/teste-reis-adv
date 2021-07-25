@@ -27,6 +27,9 @@ class Pizza {
   @Column()
   user_id: string;
 
+  @Column()
+  image: string;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'user_id' })
   user: User;
