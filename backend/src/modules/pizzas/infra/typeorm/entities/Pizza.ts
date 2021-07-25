@@ -11,7 +11,7 @@ import {
 import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('pizzas')
-class Product {
+class Pizza {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -38,4 +38,4 @@ class Product {
   updated_at: Date;
 }
 
-export default Product;
+export default Pizza;

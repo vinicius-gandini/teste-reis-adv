@@ -26,7 +26,7 @@ class CreateUserService {
     const userExists = await this.usersRepository.findByUser(username);
 
     if (userExists) {
-      throw new AppError('There is already a product with this name');
+      throw new AppError('There is already a user with this username');
     }
 
     const hashedPassword = await this.hashProvider.generateHash(password);
