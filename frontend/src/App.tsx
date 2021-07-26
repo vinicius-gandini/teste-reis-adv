@@ -5,12 +5,13 @@ import GlobalStyle from './styles/global';
 import AppProvider from './context';
 
 import Routes from './routes';
+import Pizzas from './pages/Pizzas';
 
 const App: React.FC = () => (
   <>
     <Router>
       <AppProvider>
-        <Routes />
+        <Pizzas />
       </AppProvider>
 
       <GlobalStyle />
