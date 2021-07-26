@@ -15,12 +15,14 @@ class PizzasRepository implements IPizzasRepository {
     description,
     price,
     user_id,
+    image,
   }: ICreatePizzaDTO): Promise<Pizza> {
     const pizza = this.ormRepository.create({
       name,
       description,
       price,
       user_id,
+      image,
     });
 
     await this.ormRepository.save(pizza);

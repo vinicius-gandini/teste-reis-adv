@@ -28,6 +28,7 @@ class CreatePizzaService {
     image,
   }: IRequest): Promise<Pizza> {
     const pizzaExists = await this.pizzasRepository.findByName(name);
+    console.log(image);
 
     if (pizzaExists) {
       throw new AppError('There is already a pizza with this name');

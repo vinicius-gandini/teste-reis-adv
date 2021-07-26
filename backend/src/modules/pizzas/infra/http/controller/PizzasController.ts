@@ -4,7 +4,8 @@ import { container } from 'tsyringe';
 import CreatePizzaService from '@modules/pizzas/services/CreatePizzaService';
 import ListPizzaService from '@modules/pizzas/services/ListPizzaService';
 import RemovePizzaService from '@modules/pizzas/services/RemovePizzaService';
-import Pizza from '@modules/pizzas/infra/typeorm/entities/Pizza';
+
+import pizzaView from '../../../views/pizzasView';
 
 export default class PizzasController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -30,7 +31,7 @@ export default class PizzasController {
 
     const pizzas = await listPizzas.execute();
 
-    return response.json(pizzas);
+    return response.json(pizzaView.renderMany(pizzas));
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
