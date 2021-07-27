@@ -3,10 +3,10 @@ import Input from '../../components/Input';
 
 import cutter from '../../assets/cutter.png';
 
-import { Container, Content } from './styles';
+import { Container, Content, Pizzayo } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -28,6 +28,10 @@ const Register: React.FC = () => {
 
   return (
     <Container>
+      <Pizzayo>
+        <span>Pizza</span>
+        <span>YO</span>
+      </Pizzayo>
       <Content>
         <img src={cutter} alt="" />
         <p>Crie sua conta</p>
@@ -53,6 +57,7 @@ const Register: React.FC = () => {
           />
           <button type="submit">Cadastrar</button>
         </form>
+        <Link to="/">Voltar ao login</Link>
       </Content>
     </Container>
   );

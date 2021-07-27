@@ -3,7 +3,7 @@ import Input from '../../components/Input';
 
 import pizza from '../../assets/pizza.png';
 
-import { Container, Content } from './styles';
+import { Container, Content, Pizzayo } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
@@ -27,6 +27,10 @@ const Login: React.FC = () => {
 
   return (
     <Container>
+      <Pizzayo>
+        <span>Pizza</span>
+        <span>YO</span>
+      </Pizzayo>
       <Content>
         <img src={pizza} alt="" />
         <p>Acesse sua conta</p>

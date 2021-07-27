@@ -4,8 +4,9 @@ export const Container = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 2rem;
 `;
 
@@ -59,5 +60,22 @@ export const Content = styled.div`
     &:hover {
       color: #008000;
     }
+  }
+`;
+
+export const Pizzayo = styled.div`
+  margin-bottom: 2rem;
+
+  span {
+    font-size: 4em;
+    font-weight: bold;
+  }
+
+  span:first-child {
+    color: #ed4c4c;
+  }
+
+  span:last-child {
+    color: #008000;
   }
 `;
