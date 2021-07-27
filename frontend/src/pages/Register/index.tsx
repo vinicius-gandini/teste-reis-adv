@@ -1,24 +1,25 @@
 import React, { FormEvent, useEffect } from 'react';
 import Input from '../../components/Input';
 
-import pizza from '../../assets/pizza.png';
+import cutter from '../../assets/cutter.png';
 
 import { Container, Content } from './styles';
 import api from '../../services/api';
 import { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-const Login: React.FC = () => {
+const Register: React.FC = () => {
   const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const { signIn } = useAuth();
+  const history = useHistory();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     try {
-      await signIn({ username, password });
+      await api.post('users', {name, username, password});
+      history.push('/');
     } 
     catch(err) {
       console.log(err.response);
@@ -28,9 +29,15 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Content>
-        <img src={pizza} alt="" />
-        <p>Acesse sua conta</p>
+        <img src={cutter} alt="" />
+        <p>Crie sua conta</p>
         <form onSubmit={(e) => handleSubmit(e)}>
+          <Input
+            label="Nome"
+            placeholder="Informe seu nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <Input
             label="Usuário"
             placeholder="Informe o usuário"
@@ -40,16 +47,15 @@ const Login: React.FC = () => {
           <Input
             type="password"
             label="Senha"
-            placeholder="Digite sua senha"
+            placeholder="Digite a senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Entrar</button>
+          <button type="submit">Cadastrar</button>
         </form>
-        <Link to="/register">Criar uma conta</Link>
       </Content>
     </Container>
   );
 };
 
-export default Login;
+export default Register;

@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
+import { useEffect } from 'react';
 import api from '../services/api';
 
 interface User {
@@ -13,8 +14,10 @@ interface SignInCredentials {
 interface AuthContextData {
   user: User;
   userId: string;
+  showAddPizza: boolean;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
+  setShowAddPizza: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -30,6 +33,7 @@ const AuthProvider: React.FC = ({ children }) => {
     return {} as User;
   });
   const [ userId, setUserId ] = useState('');
+  const [showAddPizza, setShowAddPizza] = useState(false);
 
   const signIn = useCallback(async ({ username, password }) => {
     const response = await api.post('sessions', {
@@ -49,11 +53,12 @@ const AuthProvider: React.FC = ({ children }) => {
     localStorage.removeItem('@Pizzayo:user');
 
     setData({} as User);
+    setUserId('');
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user: data, userId, signIn, signOut }}
+      value={{ user: data, userId, showAddPizza, setShowAddPizza, signIn, signOut }}
     >
       {children}
     </AuthContext.Provider>

@@ -6,7 +6,7 @@ export const Container = styled.label`
   font-weight: bold;
   margin-bottom: 1rem;
   
-  input {
+  textarea {
     padding: 0.5rem;
     border-radius: 4px;
     border: none;
